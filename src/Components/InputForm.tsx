@@ -87,7 +87,7 @@ export default function InputForm() {
                         <input type="checkbox" name="acceptTerms" ref={register} /> Accept Terms & Conditions
                     {errors.acceptTerms && <p className="error">{errors.acceptTerms?.message}</p>}
                     </div>
-                    <button type='submit' className="btn btn-primary btn-block savebtn">Save</button>
+                    <button type='submit' className="btn btn-success btn-block savebtn">Save</button>
                 </form>
             </div>
         </div>
