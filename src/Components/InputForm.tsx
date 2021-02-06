@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import './InputForm.css'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { types } from "util";
 
 type InputForm = {
     firstName: string
