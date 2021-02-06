@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import './InputForm.css'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { types } from "util";
 
-type Profile = {
+type InputForm = {
     firstName: string
     lastName: string,
     email: string,
@@ -30,7 +31,7 @@ const schema = yup.object().shape({
 });
 
 export default function InputForm() {
-    const { register, handleSubmit, errors } = useForm<Profile>({
+    const { register, handleSubmit, errors } = useForm<InputForm>({
         resolver: yupResolver(schema)
     });
 
@@ -43,33 +44,33 @@ export default function InputForm() {
             <div className="w-75 mx-auto shadow p-5 AddStyle"  >
                 <form onSubmit={onSubmit}>
                     <div>
-                        <label htmlFor="firstname">First Name</label>
-                        <input ref={register} id="firstName" name="firstName" type="text" />
+                        <label htmlFor="firstName">First Name</label>
+                        <input ref={register}  name="firstName" type="text" />
                         {errors.firstName && <p className="error">{errors.firstName.message}</p>}
                     </div>
                     <div>
-                        <label htmlFor="lastname">Last Name</label>
-                        <input ref={register} id="lastName" name="lastName" type="text" />
+                        <label htmlFor="lastName">Last Name</label>
+                        <input ref={register}  name="lastName" type="text" />
                         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>
-                        <input ref={register} id="email" name="email" type="email" />
+                        <input ref={register}  name="email" type="email" />
                         {errors.email && <p className="error">{errors.email.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input ref={register} id="lastName" name="password" type="password" />
+                        <input ref={register}  name="password" type="password" />
                         {errors.password && <p className="error">{errors.password.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="phone">Phone No.</label>
-                        <input ref={register} id="phone" name="phone" type="text" />
+                        <input ref={register}  name="phone" type="text" />
                         {errors.phone && <p className="error">{errors.phone.message}</p>}
                     </div>
                     <div>
                         <label htmlFor='gender'>Gender</label>
-                        <select ref={register} name='gender' id='gender' className='selectbtn'>
+                        <select ref={register} name='gender' className='selectbtn'>
                             <option value=''>Select..</option>
                             <option value='male'>Male</option>
                             <option value='female'>Female</option>
