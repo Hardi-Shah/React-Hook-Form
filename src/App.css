@@ -37,7 +37,6 @@ abel {
 input[type='text'],
 input[type='email'],
 input[type='password'],
-input[type='radio'],
 input[type='number'],
 input[type='tel'],
 input[type='file'],
@@ -53,7 +52,7 @@ select {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-   margin-bottom: 20px;  
+  margin-bottom: 20px;  
 }
 
 .form-control {

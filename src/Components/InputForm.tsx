@@ -6,38 +6,30 @@ import * as yup from "yup";
 
 type Profile = {
     firstName: string
-    lastName: string
-    age: number,
+    lastName: string,
     email: string,
     password: string,
-    modeOfContact: '',
-    phone: '',
-    gender:string
+    developer: string,
+    phone: number,
+    gender: string,
+    acceptTerms: null
 }
 const schema = yup.object().shape({
     firstName: yup.string().required('FirstName is Required'),
     lastName: yup.string().required('LastName is Required'),
     email: yup.string().required('Email is Reuired').matches(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, 'invalid email format').email('Invalid email format'),
     password: yup.string().required('Password is Reuired').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"),
-    age: yup.number().required('Age is Required').typeError("That doesn't look like a  number").positive("Age number can't start with a minus").integer('Age must be real number'),
-    modeOfContact: yup.string().required('Reuired'),
-    gender:yup.string().required('select option'),
-    phone: yup.string().when('modeOfContact',
-        {
-            is: 'telephonemoc',
-            then: yup.string().required('Required')
-        })
+    developer: yup.string().required('This Field is Reuired').nullable(),
+    gender: yup.string().required('Select Option is Required'),
+    acceptTerms: yup.boolean().oneOf([true], "You must accept Terms & Conditions").required('Select checkbox is Required').nullable(),
+    phone: yup.number().required('A phone number is required')
+        .typeError("That doesn't look like a phone number")
+        .positive("A phone number can't start with a minus")
+        .integer("A phone number can't include a decimal point")
+        .min(8)
 });
 
 export default function InputForm() {
-    const options = [
-        {
-            key: 'Email', value: 'emailmoc'
-        },
-        {
-            key: 'Telephone', value: 'telephonemoc'
-        }
-    ]
     const { register, handleSubmit, errors } = useForm<Profile>({
         resolver: yupResolver(schema)
     });
@@ -71,30 +63,31 @@ export default function InputForm() {
                         {errors.password && <p className="error">{errors.password.message}</p>}
                     </div>
                     <div>
-                        <label htmlFor="age">Age</label>
-                        <input ref={register} id="age" name="age" type="text" />
-                        {errors.age && <p className="error">{errors.age.message}</p>}
-                    </div>
-                    <div>
-                        <label htmlFor='gender'>Gender</label>
-                        <select ref={register} name='gender' id='gender'>
-                            <option value=''>Select..</option>
-                            <option value='male'>Male</option>
-                            <option value='female'>Female</option>
-                            {errors.gender && <p className="error">{errors.gender.message}</p>}
-                        </select>
-                    </div>
-                    <div>
-                        <label htmlFor="modeOfContact">modeOfContact</label>
-                        <input ref={register} id="modeOfContact" name="modeOfContact" type="radio" />
-                        {errors.modeOfContact && <p className="error">{errors.modeOfContact.message}</p>}
-                    </div>
-                    <div>
                         <label htmlFor="phone">Phone No.</label>
                         <input ref={register} id="phone" name="phone" type="text" />
                         {errors.phone && <p className="error">{errors.phone.message}</p>}
                     </div>
-                    <button type='submit' className="btn btn-primary btn-block">Save</button>
+                    <div>
+                        <label htmlFor='gender'>Gender</label>
+                        <select ref={register} name='gender' id='gender' className='selectbtn'>
+                            <option value=''>Select..</option>
+                            <option value='male'>Male</option>
+                            <option value='female'>Female</option>
+                        </select>
+                        {errors.gender && <p className="error">{errors.gender.message}</p>}
+                    </div>
+                    <div className='radiobtn'>
+                        <label htmlFor="developer" >Developer:</label>
+                        <input type="radio" name="developer" value={'yes'} ref={register} />Yes
+                        <input type="radio" name="developer" value={'no'} ref={register} />No
+                        {errors.developer && <p className="error">{errors.developer.message}</p>}
+                    </div>
+                    <div>
+                        <label htmlFor="acceptTerms">Accept Terms & Conditions:</label>
+                        <input type="checkbox" name="acceptTerms" ref={register} /> Accept Terms & Conditions
+                    {errors.acceptTerms && <p className="error">{errors.acceptTerms?.message}</p>}
+                    </div>
+                    <button type='submit' className="btn btn-primary btn-block savebtn">Save</button>
                 </form>
             </div>
         </div>
