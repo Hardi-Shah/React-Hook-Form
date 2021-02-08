@@ -11,9 +11,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <InputForm />
-        <Header/>
-        <HeadLine/>
+        {/* <InputForm /> */}
+        {/* <Header/> */}
+        <section className="main">
+          <HeadLine header="Posts" desc="Click the button to render posts!" />    
+        </section>
       </div>
     </Router>
   );
