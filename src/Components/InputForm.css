@@ -14,5 +14,8 @@
 .selectbtn{
     margin-bottom: 20px; 
 }
+input:invalid{
+    border: 2px solid red;
+}
 
 
