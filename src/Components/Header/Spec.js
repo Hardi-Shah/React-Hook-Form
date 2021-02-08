@@ -22,7 +22,6 @@ describe('Header Component', () => {
     });
 
     it('Should render a logo', () => {
-        //const logo = component.find('.logoIMG');
         const logo=findByTestAtrr(component, 'logoIMG');
         expect(logo.length).toBe(1);
     });
