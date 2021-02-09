@@ -12,8 +12,12 @@
     margin-bottom: 20px;
     margin-left: -73px;  
 }
-input:invalid{
-    border: 2px solid red;
+.radioInput{
+    margin-left: 10px;
 }
+.checkboxInput{
+    margin-left: 10px;
+}
+
 
 

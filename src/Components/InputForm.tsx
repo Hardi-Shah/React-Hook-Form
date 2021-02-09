@@ -4,8 +4,8 @@ import './InputForm.css'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import Button from '@material-ui/core/Button';
-import { green, purple } from '@material-ui/core/colors';
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 type InputForm = {
@@ -40,9 +40,10 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
     savebtn: {
         color: 'white',
-        width: '645px',
-        marginLeft: '-75px',
+        width: '154px',
+        marginLeft: '150px',
         marginTop: '20px',
+        borderRadius:'4px'
     },
     paper: {
         margin: 'auto',
@@ -68,32 +69,32 @@ export default function InputForm() {
                     <form onSubmit={onSubmit}>
                         <div>
                             <label htmlFor="firstName">First Name</label>
-                            <input ref={register} name="firstName" type="text" />
+                            <input ref={register} name="firstName" type="text" style={{border:errors.firstName?.message ?'2px solid red':''}} />
                             {errors.firstName && <p className="error">{errors.firstName.message}</p>}
                         </div>
                         <div>
                             <label htmlFor="lastName">Last Name</label>
-                            <input ref={register} name="lastName" type="text" />
+                            <input ref={register} name="lastName" type="text" style={{border:errors.lastName?.message ?'2px solid red':''}}/>
                             {errors.lastName && <p className="error">{errors.lastName.message}</p>}
                         </div>
                         <div>
                             <label htmlFor="email">Email</label>
-                            <input ref={register} name="email" type="email" />
+                            <input ref={register} name="email" type="email" style={{border:errors.email?.message ?'2px solid red':''}}/>
                             {errors.email && <p className="error">{errors.email.message}</p>}
                         </div>
                         <div>
                             <label htmlFor="password">Password</label>
-                            <input ref={register} name="password" type="password" />
+                            <input ref={register} name="password" type="password" style={{border:errors.password?.message ?'2px solid red':''}} />
                             {errors.password && <p className="error">{errors.password.message}</p>}
                         </div>
                         <div>
                             <label htmlFor="phone">Phone No.</label>
-                            <input ref={register} name="phone" type="text" />
+                            <input ref={register} name="phone" type="text" style={{border:errors.phone?.message ?'2px solid red':''}} />
                             {errors.phone && <p className="error">{errors.phone.message}</p>}
                         </div>
                         <div>
                             <label htmlFor='gender'>Gender</label>
-                            <select ref={register} name='gender' className='selectbtn'>
+                            <select ref={register} name='gender' className='selectbtn' style={{border:errors.gender?.message ?'2px solid red':''}}>
                                 <option value=''>Select..</option>
                                 <option value='male'>Male</option>
                                 <option value='female'>Female</option>
@@ -101,14 +102,14 @@ export default function InputForm() {
                             {errors.gender && <p className="error">{errors.gender.message}</p>}
                         </div>
                         <div className='radiobtn'>
-                            <label htmlFor="developer" >Developer:</label>
-                            <input type="radio" name="developer" value={'yes'} ref={register} />Yes
+                            <label htmlFor="developer" >Developer: </label>
+                            <input type="radio" name="developer" value={'yes'} ref={register} className='radioInput' />Yes
                             <input type="radio" name="developer" value={'no'} ref={register} />No
                             {errors.developer && <p className="error">{errors.developer.message}</p>}
                         </div>
                         <div>
-                            <label htmlFor="acceptTerms">Accept Terms & Conditions:</label>
-                            <input type="checkbox" name="acceptTerms" ref={register} /> Accept Terms & Conditions
+                            <label htmlFor="acceptTerms">Accept Terms & Conditions: </label>
+                            <input type="checkbox" name="acceptTerms" ref={register} className='checkboxInput'/> Accept Terms & Conditions
                             {errors.acceptTerms && <p className="error">{errors.acceptTerms?.message}</p>}
                         </div>
                         <ThemeProvider theme={theme}>
