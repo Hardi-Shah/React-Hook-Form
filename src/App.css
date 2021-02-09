@@ -27,11 +27,11 @@
 .App-link {
   color: #61dafb;
 }
-abel {
+label {
   font-weight: bold;
   display:flex;
   margin-bottom: 5px;
-  float: left;
+  margin-left: -64px;
 }
 
 input[type='text'],
@@ -43,7 +43,7 @@ input[type='file'],
 textarea,
 select {
   display: block;
-  width: 720px;
+  width: 636px;
   padding: 6px 12px;
   font-size: 16px;
   line-height: 1.42857143;
@@ -52,7 +52,8 @@ select {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
+  margin-left: -73px;  
 }
 
 .form-control {
@@ -61,6 +62,7 @@ select {
 
 .error   {
   color: red;
+  margin-left: -67px;
 }
 
 @keyframes App-logo-spin {
