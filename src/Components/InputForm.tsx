@@ -41,13 +41,13 @@ const useStyles = makeStyles((theme) => ({
     savebtn: {
         color: 'white',
         width: '645px',
-        marginLeft:'-75px',
-        marginTop:'20px',
+        marginLeft: '-75px',
+        marginTop: '20px',
     },
-paper: {
-    margin: 'auto',
+    paper: {
+        margin: 'auto',
         width: '70%',
-            boxShadow: theme.shadows[5],
+        boxShadow: theme.shadows[5],
     },
 }))
 
@@ -103,18 +103,18 @@ export default function InputForm() {
                         <div className='radiobtn'>
                             <label htmlFor="developer" >Developer:</label>
                             <input type="radio" name="developer" value={'yes'} ref={register} />Yes
-                        <input type="radio" name="developer" value={'no'} ref={register} />No
-                        {errors.developer && <p className="error">{errors.developer.message}</p>}
+                            <input type="radio" name="developer" value={'no'} ref={register} />No
+                            {errors.developer && <p className="error">{errors.developer.message}</p>}
                         </div>
                         <div>
                             <label htmlFor="acceptTerms">Accept Terms & Conditions:</label>
                             <input type="checkbox" name="acceptTerms" ref={register} /> Accept Terms & Conditions
-                    {errors.acceptTerms && <p className="error">{errors.acceptTerms?.message}</p>}
+                            {errors.acceptTerms && <p className="error">{errors.acceptTerms?.message}</p>}
                         </div>
                         <ThemeProvider theme={theme}>
                             <Button type='submit' color="primary" className={classes.savebtn} variant="contained" >
                                 Save
-                    </Button>
+                            </Button>
                         </ThemeProvider>
                     </form>
                 </div>
